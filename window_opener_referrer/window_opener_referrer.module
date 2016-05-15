@@ -33,6 +33,14 @@ function window_opener_referrer_filter_process($text)
     return $modified ? filter_dom_serialize($html_dom) : $text;
 }
 
+/**
+ * Set script to head
+ * 
+ * Instruction:
+ * Rename the function to your desired theme name,
+ * e.g. "bartik_html_head_alter" into "seven_html_head_alter"
+ * 
+ */
 function bartik_html_head_alter(&$head_elements)
 {
     $head_elements['script'] = array(

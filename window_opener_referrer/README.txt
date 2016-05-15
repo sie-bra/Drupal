@@ -16,7 +16,10 @@ var newWnd = window.open();
 newWnd.opener = null;
 
 Install:
-1. Activate Module: Window opener referrer
-2. Go to admin/config/content/formats -> e.g. full_html and set "rel="noopener noreferrer"
+1. Rename the "bartik_html_head_alter" function (window_opener_referrer.module) to your desired theme name,
+   e.g. into "seven_html_head_alter"
+2. Activate Module: Window opener referrer
+3. Go to admin/config/content/formats -> e.g. full_html and set "rel="noopener noreferrer"
+
 
 
