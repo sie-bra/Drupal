@@ -1,9 +1,0 @@
-name = Window opener referrer
-description = Setzt rel="noopener noreferrer" zu allen Links mit target="_blank"
-core = 7.x
-
-version = "7.x-1.0"
-core = "7.x"
-project = "window_opener_referrer"
-datestamp = "1463249100"
-

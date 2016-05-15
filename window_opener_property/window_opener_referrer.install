@@ -1,9 +1,0 @@
-<?php
-
-/**
- * Implements hook_uninstall().
- */
-function window_opener_referrer_uninstall()
-{
-    variable_del('window_opener_referrer_link');
-}
