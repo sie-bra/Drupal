@@ -15,5 +15,8 @@ Additionally, every time a new window opened via window.open(), it reset the "op
 var newWnd = window.open();
 newWnd.opener = null;
 
+Install:
+1. Activate Module: Window opener referrer
+2. Go to admin/config/content/formats -> e.g. full_html and set "rel="noopener noreferrer"
 
 
