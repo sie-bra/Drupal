@@ -1,0 +1,44 @@
+<?php
+
+/**
+ * Implements hook_filter_info().
+ */
+function window_opener_referrer_filter_info()
+{
+    $filters['window_opener_referrer'] = array(
+        'title' => t('Setzt <code>rel="noopener noreferrer"</code> zu allen Links mit <code>target="_blank"</code>'),
+        'process callback' => 'window_opener_referrer_filter_process',
+    );
+    return $filters;
+}
+
+/**
+ * Filter process callback.
+ */
+function window_opener_referrer_filter_process($text)
+{
+    $modified = false;
+    $html_dom = filter_dom_load($text);
+    $links = $html_dom->getElementsByTagName('a');
+    foreach ($links as $link) {
+        if (url_is_external($link->getAttribute('href'))) {
+            if ($link->getAttribute('target') == '_blank') {
+                $rel = $link->getAttribute('rel');
+                $rel .= $rel ? ' noopener noreferrer' : 'noopener noreferrer';
+                $link->setAttribute('rel', $rel);
+                $modified = true;
+            }
+        }
+    }
+    return $modified ? filter_dom_serialize($html_dom) : $text;
+}
+
+function bartik_html_head_alter(&$head_elements)
+{
+    $head_elements['script'] = array(
+        '#type' => 'markup',
+        '#markup' => '<script type="text/javascript">var newWindow = window.open(); newWindow.opener = null;</script>' . "\r\n",
+        '#weight' => 10000,
+    );
+    drupal_add_html_head($head_elements, 'script');
+}
