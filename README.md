@@ -1,4 +1,4 @@
-# Drupal
+# <img src="https://github.com/sie-bra/Drupal/blob/master/drupal.jpg">
 
 As soon as you start developing websites in Drupal 7, the need to create custom modules arises. There will be plenty of situations where you need to create custom hooks to handle certain business requirements for your Drupal website; and those hooks have to live inside a custom module. 
 
