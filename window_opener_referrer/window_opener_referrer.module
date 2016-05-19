@@ -45,8 +45,17 @@ function bartik_html_head_alter(&$head_elements)
 {
     $head_elements['script'] = array(
         '#type' => 'markup',
-        '#markup' => '<script type="text/javascript">var newWindow = window.open(); newWindow.opener = null;</script>' . "\r\n",
+        '#markup' => '<script type="text/javascript">
+            $(document).ready(function () {
+            $(\'a[target="_blank"]\').click(function (e) {
+                e.preventDefault();
+                var newWindow = window.open($(this).attr(\'href\'));
+                newWindow.opener = null;
+              })
+            });
+        </script>' . "\r\n",
         '#weight' => 10000,
     );
+
     drupal_add_html_head($head_elements, 'script');
 }
